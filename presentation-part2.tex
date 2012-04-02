@@ -1,0 +1,52 @@
+\documentclass[17pt,sans,mathserif]{beamer}
+
+\usetheme{ddb}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1pt}
+\setlength{\TPVertModule}{1pt}
+\usepackage{sgamevar}
+\usepackage{tikz}
+
+\newenvironment{framebg}[1]
+{
+  \begingroup
+    \usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{#1}}
+    \begin{frame}
+}
+{
+    \end{frame}
+  \endgroup
+}
+
+\newcommand{\switchnormaltextcolor}[1]{
+  \setbeamercolor{normal text}{use={#1},fg={#1.fg}, bg={#1.bg}}
+  \usebeamercolor[fg]{#1}
+}
+\newenvironment{framestruct}
+{
+  \begingroup
+  \switchnormaltextcolor{structural frame}
+    \begin{frame}
+}
+{
+    \end{frame}
+  \endgroup
+}
+
+\newcommand{\framestructtitle}[1]{
+  \begin{center}
+    \Huge
+    \textbf{#1}
+  \end{center}
+}
+
+\begin{document}
+
+\include{introduction}
+\include{learning}
+\include{repeated_games}
+\include{conclusion}
+
+\end{document}

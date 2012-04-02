@@ -1,0 +1,145 @@
+% -*- TeX-master: "presentation"; TeX-command-default: "SCons"; -*-
+
+\begin{framestruct}
+  \framestructtitle{Repeated games}
+\end{framestruct}
+
+\begin{frame}
+  \frametitle{Markov Decision Process (MDP)}
+  \pause
+  state space $X$
+
+  action space $U$
+
+  transition $P:X\times U \to \Delta(X)$
+
+  reward $r:X \times U \to \mathbb{R}$
+
+  discount factor $\delta \in [0,1]$
+
+
+  \pause
+  \bigskip
+  \[U(x(\cdot), u(\cdot)) = \sum_{t=0}^{+\infty} \delta^t r(x(t), u(t))\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{MDP (continued)}
+  history $\mathcal{H} \in \prod (X,U)$
+
+  policy $\pi: \mathcal{H} \to \Delta(U)$
+
+  \pause
+  $V^\pi(x_0) = \mathbb{E}_{\pi}\left[U(x(\cdot), u(\cdot))\right]$
+
+  \pause
+  \[V(x_0) = \max_{\pi} V^\pi(x_0)\]
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Principle of Optimality}
+
+  Bellman's equation:
+  \[V(x_0) = \max_{u_0} \left[r(x_0, u_0) + \delta V(P(x_0, u_0))\right]\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dynamic Programming}
+
+  Solving the MDP:
+  \begin{itemize}
+  \pause \item knowing $P$: value iteration
+  \pause \item not knowing $P$: online learning
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Repeated game}
+  \pause
+  Game $(\mathcal{I}, \prod_i A_i, \prod_i u_i)$
+
+  \pause
+  Discount factor $\delta$
+  \[U_i(a(\cdot)) = \sum_{t=0}^{+\infty} \delta^t u_i(a(t))\]
+
+  \pause
+  Strategy $\sigma: \mathcal{H} \to \prod_i \Delta(A_ix)$
+  \[V_i(\sigma) = \mathbb{E}_{\sigma}\left[U_i(a(\cdot))\right]\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nash equilibrium}
+
+  Player $i$:
+  \begin{itemize}
+  \item choices $\sigma_i$
+  \item utility $V_i$
+  \end{itemize}
+
+  \pause
+  Nash equilibrium is not strong enough!
+  (Explanation on the whiteboard {\Huge $\Rightarrow$})
+\end{frame}
+
+\begin{frame}
+  \frametitle{Information structure}
+
+  \pause
+  \begin{itemize}
+  \item perfect
+  \item imperfect
+  \end{itemize}
+
+  \pause
+  \begin{itemize}
+  \item public
+  \item private (beliefs)
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Folk theorem}
+
+  Any feasible, strictly individually rational payoff can be sustained by a
+  sequentially rational equilibrium.
+
+  \pause
+  \bigskip
+  Holy grail for repeated games.
+\end{frame}
+
+\begin{frame}
+  \begin{figure}
+  \begin{tikzpicture}[scale=1,
+                      axes/.style=,
+                      payoffs/.style=,
+                      feasible/.style={opacity=0.2}]
+    \input{payoffs.tikz}
+  \end{tikzpicture}
+  \end{figure}
+\end{frame}
+
+\begin{framestruct}
+  \framestructtitle{Research}
+\end{framestruct}
+
+\begin{frame}
+  \frametitle{Weakly belief-free equilibria}
+
+  Characterization of repeated games with correlated equilibria.
+\end{frame}
+
+
+\begin{framestruct}
+  \frametitle{Repeated games}
+
+  \begin{itemize}
+  \pause \item Dynamic programming
+  \pause \item Repeated games
+  \pause \item Folk theorem
+  \end{itemize}
+
+\end{framestruct}

@@ -1,0 +1,46 @@
+\documentclass[17pt,sans,mathserif]{beamer}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{itemize item}{fg=red!80!black}
+\setbeamercolor{frametitle}{fg=red!80!black}
+
+\setbeamercolor{what how where}{bg=black,fg=gray!10!white}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1pt}
+\setlength{\TPVertModule}{1pt}
+
+
+\usepackage{sgamevar}
+
+
+\newcommand{\whw}[1]{
+{
+  \usebeamercolor[fg]{what how where}
+  \setbeamercolor{background canvas}{bg=what how where.bg}
+  \begin{frame}
+    \begin{center}
+      \Huge
+      \textbf{#1}
+    \end{center}
+  \end{frame}
+}
+}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\tikzstyle{block} = [draw, rectangle, minimum size=1cm]
+\tikzstyle{sum} = [draw, circle, node distance=2cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thick,black}]
+
+\begin{document}
+
+\include{content}
+
+\end{document}

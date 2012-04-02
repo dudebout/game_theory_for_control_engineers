@@ -1,0 +1,124 @@
+% -*- TeX-master: "presentation"; TeX-command-default: "SCons"; -*-
+
+\begin{framestruct}
+\framestructtitle{Learning in games}
+\end{framestruct}
+
+\begin{frame}
+  \frametitle{Best Response learning}
+
+  \begin{enumerate}
+  \pause \item Guess what the opponent(s) will play
+  \pause \item Play a Best Response to that guess
+  \pause \item Observe the play
+  \pause \item Update the guess
+  \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{BR learning: Cournot dynamics}
+  \pause
+  Guess = last action played
+  \pause
+
+  \begin{game}{2}{2}
+      \> $C$     \> $D$    \\
+    $C$ \> $2, 2$  \> $-1, 3$\\
+    $D$ \> $3, -1$ \> $0, 0$ \\
+  \end{game}
+  \pause
+
+  \begin{game}{3}{3}
+      \> $R$     \> $P$     \> $S$     \\
+    $R$ \> $0, 0$  \> $-1, 1$ \> $1, -1$ \\
+    $P$ \> $1, -1$ \> $0, 0$  \> $-1, 1$ \\
+    $S$ \> $-1, 1$ \> $1, -1$ \> $0, 0$
+  \end{game}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{BR learning: Fictitious play}
+  \pause
+  Guess = empirical distribution of play
+  \pause
+  \begin{game}{3}{3}
+      \> $R$     \> $P$     \> $S$     \\
+    $R$ \> $0, 0$  \> $-1, 1$ \> $1, -1$ \\
+    $P$ \> $1, -1$ \> $0, 0$  \> $-1, 1$ \\
+    $S$ \> $-1, 1$ \> $1, -1$ \> $0, 0$
+  \end{game}
+  \pause
+  \begin{game}{3}{3}
+      \> $L$    \> $C$    \> $R$    \\
+    $U$ \> $0, 0$ \> $0, 1$ \> $1, 0$ \\
+    $M$ \> $1, 0$ \> $0, 0$ \> $0, 1$ \\
+    $D$ \> $0, 1$ \> $1, 0$ \> $0, 0$
+  \end{game}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evolutionary learning}
+  \pause
+  Action set: $A$
+
+  Utility function: $u$
+
+  \pause
+  \bigskip
+  $p \in \Delta(A), k \in A$
+
+  $\dot{p_k} = p_k\left(u(k, p) - u(p, p)\right)$
+\end{frame}
+
+\begin{frame}
+  \frametitle{Battle of the Sexes}
+
+  \pause
+  \begin{game}{2}{2}
+      \> $O$     \> $F$    \\
+    $O$ \> $3, 2$  \> $0, 0$ \\
+    $F$ \> $0, 0$  \> $2, 3$ \\
+  \end{game}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Correlated equilibrium (CE)}
+  \pause
+  $a^* \in A = \prod_iA_i$ is a NE:
+  \[\forall i, \forall a'_i, u_i(a_i^*, a_{-i}^*) \ge u_i(a_i', a_{-i}^*)\]
+
+  \pause
+  $\alpha \in \prod_i\Delta(A_i)$ is a NE: $\forall i, \forall a_i, \forall a'_i,$
+  \[\sum_{a_{-i}} u_i(a_i, a_{-i}) \alpha(a) \ge
+  \sum_{a_{-i}} u_i(a_i',
+  a_{-i}) \alpha(a) \]
+
+  \pause
+  $\pi \in \Delta(A)$ is a CE: $\forall i, \forall a_i, \forall a'_i,$
+  \[\sum_{a_{-i}} u_i(a_i, a_{-i}) \pi(a) \ge
+  \sum_{a_{-i}} u_i(a_i', a_{-i}) \pi(a) \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{No regret learning}
+  \pause
+  \[u_i(k, a_{-i}) - u_i(j, a_{-i})\]
+  \pause
+  \[R^i_{jk}(t) = \sum_{\tau = 0: a_i(\tau) = j}^t u_i(k, a_{-i}(\tau)) - u_i(j,
+  a_{-i}(\tau))\]
+  \pause
+  Regret matching converges to the correlated equilibria set.
+\end{frame}
+
+\begin{framestruct}
+  \frametitle{Learning in games}
+
+  \begin{itemize}
+  \pause \item Best response
+  \pause \item Replicator dynamics
+  \pause \item No regret
+  \end{itemize}
+
+\end{framestruct}

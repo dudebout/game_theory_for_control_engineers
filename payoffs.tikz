@@ -1,0 +1,57 @@
+% -*- TeX-master: "article"; TeX-command-default: "SCons"; -*-
+
+% Defining the axes
+\def\stepmin{-1}
+\def\stepmax{3}
+\def\stepextra{0.5}
+\def\ticklen{0.04}
+\coordinate (x min) at (\stepmin - \stepextra, 0) {};
+\coordinate (y min) at (0, \stepmin -\stepextra) {};
+\coordinate (x max) at  (\stepmax + \stepextra, 0) {};
+\coordinate (y max) at  (0, \stepmax + \stepextra) {};
+
+% Defining the payoffs
+\coordinate (CC) at  (2, 2) {};
+\coordinate (CD) at (-1, 3) {};
+\coordinate (DC) at (3, -1) {};
+\coordinate (DD) at  (0, 0) {};
+\coordinate (minimax) at (0,0) {};
+
+\begin{scope}[axes]
+  % Drawing the axes
+  \draw [->] (x min) -- (x max);
+  \draw [->] (y min) -- (y max);
+
+  % Drawing the ticks
+  \foreach \step in {\stepmin, ..., \stepmax}
+  {
+    \draw (-\ticklen, \step) -- (\ticklen, \step);
+    \draw (\step, -\ticklen) -- (\step, \ticklen);
+  }
+
+  % Labelling the axes
+  \node [below] at (x max) {$u_1$};
+  \node [left] at (y max) {$u_2$};
+\end{scope}
+
+\begin{scope}[payoffs]
+  % Drawing the feasible, rational payoffs
+  \begin{scope}[feasible]
+    \clip <5> (minimax) -- (y max) -| (x max);
+    \fill <4-> (CC) -- (CD) -- (DD) -- (DC) -- cycle;
+  \end{scope}
+
+  % Drawing the payoff envelope
+  \draw <4-> (CC) -- (CD) -- (DD) -- (DC) -- cycle;
+
+  \filldraw <3-> (CC) circle (0.05);
+  \filldraw <3-> (CD) circle (0.05);
+  \filldraw <2-> (DC) circle (0.05);
+  \filldraw <3-> (DD) circle (0.05);
+
+  % Labelling the pure strategies payoffs
+  \node <3-> [above right] at (CC) {$CC$};
+  \node <3-> [below left] at (DD) {$DD$};
+  \visible <2-> {\node [right] at (DC) {$DC$};}
+  \visible <3-> {\node [left] at (CD) {$CD$};}
+\end{scope}
